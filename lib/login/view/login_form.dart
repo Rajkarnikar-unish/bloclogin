@@ -61,8 +61,6 @@ class _UsernameInput extends StatelessWidget {
 }
 
 class _PasswordInput extends StatelessWidget {
-  const _PasswordInput({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
@@ -83,8 +81,6 @@ class _PasswordInput extends StatelessWidget {
 }
 
 class _LoginButton extends StatelessWidget {
-  const _LoginButton({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
@@ -93,6 +89,7 @@ class _LoginButton extends StatelessWidget {
         return state.status.isSubmissionInProgress
             ? const CircularProgressIndicator()
             : ElevatedButton(
+                key: const Key('loginForm_continue_raisedButton'),
                 onPressed: state.status.isValidated
                     ? () {
                         context.read<LoginBloc>().add(const LoginSubmitted());
